@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "edu.autocar.iotmonitor.dao.SensorDao">
+	<select id="selectList" resultType="Sensor"><![CDATA[
+		select * from sensor
+		order by sensor_id desc
+	]]></select>
+	
+	<select id="selectOne" resultType="Sensor"><![CDATA[
+		select * from sensor
+		where sensor_id = #{sensorId}
+	]]></select>
+	
+	<insert id="insert" parameterType="Sensor"><![CDATA[
+		insert into Sensor
+			(sensor_id, sensor_type, value, owner, place)
+		values(sensor_seq.nextval, #{sensorType},#{value},#{owner},#{place})
+	]]></insert>
+	
+	<update id = "update" parameterType="Sensor"><![CDATA[
+		
+	]]></update>
+	
+	<delete id = "delete" parameterType="int"><![CDATA[
+		delete from sensor
+		where sensor_id=#{sensorId}
+	]]></delete>
+</mapper>
